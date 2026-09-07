@@ -23,9 +23,7 @@ The training data (1000 rows) has 13 features (`x1`–`x13`) and a target `y` wi
 | **Mixed Naive Bayes (custom)** | **86.6%** | **0.011** |
 
 ## The Winning Model
-The best result came from a Naive Bayes variant built specifically for this data instead of relying on scikit-learn's default. Standard Gaussian Naive Bayes assumes every feature is independent given the class, which is rarely true and was likely costing some accuracy here. 
+The best result came from a Naive Bayes variant built specifically for this data instead of relying on scikit-learn's default. Standard Gaussian Naive Bayes assumes every feature is independent given the class, which is rarely true. 
 
-The custom version instead fits a full multivariate Gaussian per class (via a one-component `GaussianMixture`) for the numeric features, which lets it capture how those features move together within each class. The one-hot encoded categorical feature is modeled separately with a Bernoulli Naive Bayes, since that's the distribution that actually fits binary indicator variables. The two sets of log-probabilities are combined at prediction time.
-
-This is the model used to generate the final predictions on the evaluation set, trained on the full 1000-row training set.
+The custom version instead fits a full multivariate Gaussian per class (via a one-component `GaussianMixture`) for the numeric features, which lets it capture how those features move together within each class. The one-hot encoded categorical feature is modeled separately with a Bernoulli Naive Bayes, since that's the distribution that actually fits binary indicator variables. Finally, the model was trained on the entire 1000-row dataset to generate the evaluation predictions, where both sets of log-probabilities are summed to determine the final label for each row.
 
