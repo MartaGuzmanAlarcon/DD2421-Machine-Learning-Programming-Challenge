@@ -29,12 +29,3 @@ The custom version instead fits a full multivariate Gaussian per class (via a on
 
 This is the model used to generate the final predictions on the evaluation set, trained on the full 1000-row training set.
 
-## Repo Structure
-
-```text
-.
-├── notebook.ipynb           # full analysis: EDA, preprocessing, model comparison, final predictions
-├── requirements.txt
-├── README.md
-└── outputs/
-    └── predictions.txt      # final predictions on the evaluation set
